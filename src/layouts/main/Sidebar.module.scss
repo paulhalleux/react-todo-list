@@ -1,0 +1,62 @@
+@import "src/assets/css/global";
+
+.main__sidebar {
+    background-color: $brand-primary-light;
+    border-right: 3px solid $brand-secondary;
+    max-height: 100vh;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+
+    .scroll__container {
+        flex-grow: 1;
+        overflow: auto;
+        scrollbar-width: none;
+
+        &.scroll .sidebar__header {
+            padding: 10px 30px;
+            border-bottom-color: $brand-secondary;
+        }
+    }
+
+    .sidebar__header {
+        color: $brand-secondary;
+        background-color: $brand-primary-light;
+        border-bottom: 3px solid transparent;
+        padding: 40px 30px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        transition: padding .3s, border-bottom-color .1s;
+
+        h4 {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        h2 {
+            line-height: 1;
+        }
+    }
+}
+
+.sidebar__footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 30px;
+    background-color: darken($brand-primary-light, 8);
+    border-top: 3px solid $brand-secondary;
+    display: flex;
+    justify-content: center;
+}
+
+.collections {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px 30px 40px;
+}

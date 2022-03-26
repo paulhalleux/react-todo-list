@@ -1,0 +1,108 @@
+@import "src/assets/css/global";
+
+.draggable__card {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: -15px;
+}
+
+.handle {
+    display: grid;
+    gap: 2px;
+    grid-template-columns: 3px 3px;
+    cursor: grab;
+    user-select: none;
+
+    &:active {
+        cursor: grabbing;
+    }
+
+    span {
+        width: 2px;
+        height: 2px;
+        border-radius: 3px;
+        background: #000;
+    }
+}
+
+.collection__card {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    color: $brand-secondary;
+    flex-grow: 1;
+    overflow: hidden;
+
+    &:hover {
+        background-color: $brand-secondary-lighter;
+    }
+
+    .card__header {
+        display: flex;
+        gap: 10px;
+
+        .card__title {
+            overflow: hidden;
+            flex-grow: 1;
+            h2, h4 {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            h2 {
+                font-size: 20px;
+                line-height: 1;
+            }
+
+            h4 {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+
+        .card__options {
+            display: flex;
+            justify-content: flex-end;
+            cursor: pointer;
+            position: relative;
+            right: -4px;
+
+            .context__toggle {
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background-color: black;
+                position: relative;
+
+                &:after, &:before {
+                    content: '';
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: black;
+                    z-index: 0;
+                }
+
+                &:after {
+                    top: 7px;
+                }
+
+                &:before {
+                    top: 14px;
+                }
+            }
+        }
+    }
+}
+
+.completed {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    margin-bottom: 3px;
+    line-height: 1;
+}
