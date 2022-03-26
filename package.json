@@ -1,0 +1,46 @@
+{
+    "name": "@paulhalleux/react-boilerplate",
+    "version": "0.1.0",
+    "description": "A boilerplate to quickly create react projects",
+    "repository": "https://github.com/paulhalleux/react-boilerplate",
+    "author": "Paul Halleux",
+    "license": "MIT",
+    "scripts": {
+        "publish:local": "yarn publish --registry https://pkg.paulhalleux.be",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "cy:open": "cypress open"
+    },
+    "dependencies": {
+        "@paulhalleux/eslint-config": "^0.1.0",
+        "@paulhalleux/react-library-boilerplate": "^0.1.3",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "tsify": "^5.0.4",
+        "typescript": "^4.5.5"
+    },
+    "devDependencies": {
+        "@types/cypress-cucumber-preprocessor": "^4.0.1",
+        "@types/react": "^17.0.39",
+        "@types/react-dom": "^17.0.11",
+        "cypress": "^9.5.0",
+        "cypress-cucumber-preprocessor": "^4.3.1",
+        "react-scripts": "^5.0.0"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "cypress-cucumber-preprocessor": {
+        "nonGlobalStepDefinitions": true,
+        "commonPath": "cypress/common"
+    }
+}
