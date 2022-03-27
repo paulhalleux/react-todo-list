@@ -7,23 +7,10 @@
     margin-left: -15px;
 }
 
-.handle {
-    display: grid;
-    gap: 2px;
-    grid-template-columns: 3px 3px;
-    cursor: grab;
-    user-select: none;
-
-    &:active {
-        cursor: grabbing;
-    }
-
-    span {
-        width: 2px;
-        height: 2px;
-        border-radius: 3px;
-        background: #000;
-    }
+.empty {
+    font-size: 12px;
+    font-style: oblique;
+    opacity: .6;
 }
 
 .collection__card {
@@ -47,20 +34,6 @@
         .card__title {
             overflow: hidden;
             flex-grow: 1;
-            h2, h4 {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            h2 {
-                font-size: 20px;
-                line-height: 1;
-            }
-
-            h4 {
-                font-size: 14px;
-                font-weight: 500;
-            }
         }
 
         .card__options {

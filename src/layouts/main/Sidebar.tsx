@@ -1,11 +1,14 @@
-import { Button } from '@paulhalleux/react-components';
+import { Button, Title } from '@paulhalleux/react-components';
 import React, { UIEvent, useState } from 'react';
+import { useQuery } from 'react-query';
 
+import { CollectionsApi } from '../../api/collections-api';
 import CollectionCard from '../../components/collection/CollectionCard';
+import CreateCollectionModal from '../../components/collection/CreateCollectionModal';
 import PlusArrow from '../../components/icons/PlusArrow';
 import styles from './Sidebar.module.scss';
 
-export default function Sidebar() {
+export default function Sidebar({ width }: {width: number}) {
 	const onScroll = (e: UIEvent<HTMLElement>) => {
 		if (e.currentTarget.scrollTop > 0) {
 			e.currentTarget.classList.add(styles.scroll);
@@ -14,32 +17,27 @@ export default function Sidebar() {
 		}
 	};
 
+	const { isLoading, data } = useQuery('collections', CollectionsApi.GetCollections);
+
 	const [hover, setHover] = useState<boolean>(false);
+	const [adding, setAdding] = useState<boolean>(false);
 
 	return (
-		<section className={styles.main__sidebar}>
+		<section className={styles.main__sidebar} style={{ width }}>
 			<div className={styles.scroll__container} onScroll={onScroll}>
 				<header className={styles.sidebar__header}>
-					<h2>Collections</h2>
-					<h4>3 collections found</h4>
+					<Title>Collections</Title>
+					<Title className={styles.subtitle} size="xs">{isLoading || !data ? 'Collections loading' : `${data.length} collections available`}</Title>
 				</header>
 				<div className={styles.collections}>
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
-					<CollectionCard />
+					{data && data.map(value => <CollectionCard key={`sidebar_collection_${value.id}`} collection={value} />)}
 				</div>
 			</div>
 			<footer className={styles.sidebar__footer}>
-				<Button onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
+				<Button onClick={() => setAdding(true)} onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
 					<PlusArrow active={hover} /> Add collection
 				</Button>
+				<CreateCollectionModal shown={adding} onClose={() => setAdding(false)}/>
 			</footer>
 		</section>
 	);
