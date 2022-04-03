@@ -12,7 +12,7 @@ export default function MainLayout({ children }: Children) {
 				min={{ width: 320, height: 0 }}
 				max={{ width: 500, height: 0 }}
 				initial={{ width: 320, height: 0 }}>
-				{value => <Sidebar width={value.width} />}
+				{value => <Sidebar width={value.width}/>}
 			</Resizable>
 			<div className={styles.main__content}>
 				{children}

@@ -5,6 +5,12 @@
     gap: 8px;
     align-items: center;
     margin-left: -15px;
+    text-decoration: none;
+    outline: none;
+
+    &.active .collection__card {
+        background-color: $brand-secondary-light;
+    }
 }
 
 .empty {
@@ -42,6 +48,9 @@
             cursor: pointer;
             position: relative;
             right: -4px;
+            padding: 0 4px;
+            align-self: flex-start;
+            height: 25px;
 
             .context__toggle {
                 width: 4px;

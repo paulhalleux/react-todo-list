@@ -1,0 +1,43 @@
+@import "src/assets/css/global";
+
+.placeholder {
+    width: 100%;
+    padding: 30px 45px;
+    border-radius: 10px;
+    border: 2px dashed $brand-primary;
+    color: $brand-primary;
+    display: flex;
+    justify-content: center;
+    background-color: $brand-primary-light;
+    font-weight: 600;
+    text-align: center;
+
+    &.action {
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+            background-color: darken($brand-primary-light, 2);
+        }
+    }
+
+    &--secondary {
+        color: $brand-secondary;
+        border-color: $brand-secondary;
+        background-color: $brand-secondary-lighter;
+
+        &.action:hover {
+            background-color: $brand-secondary-light;
+        }
+    }
+
+    &--neutral {
+        color: $brand-secondary;
+        border-color: $brand-secondary;
+        background-color: transparent;
+
+        &.action:hover {
+            background-color: transparent;
+        }
+    }
+}

@@ -15,6 +15,7 @@ export interface Collection {
     description: string;
     count: number;
     done: number;
+    order: number;
     todos?: TodoItem[];
 }
 

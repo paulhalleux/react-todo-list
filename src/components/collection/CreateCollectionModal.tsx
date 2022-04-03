@@ -1,5 +1,5 @@
 import { Button, Field, FieldGroup, Modal, Title } from '@paulhalleux/react-components';
-import React, { KeyboardEvent,useState } from 'react';
+import React, { KeyboardEvent, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
 import { CollectionsApi } from '../../api/collections-api';
@@ -15,7 +15,7 @@ export default function CreateCollectionModal({ shown, onClose }: CreateCollecti
 	const [description, setDescription] = useState<string>('');
 
 	const queryClient = useQueryClient();
-	const addCollectionMutation = useMutation(CollectionsApi.AddCollection, {
+	const addCollectionMutation = useMutation(CollectionsApi.addCollection, {
 		onSuccess: () => {
 			queryClient.refetchQueries('collections');
 			onClose();
@@ -39,8 +39,10 @@ export default function CreateCollectionModal({ shown, onClose }: CreateCollecti
 		<Modal size={'sm'} shown={shown} onHide={onClose}>
 			<Title>Add a new collection of todos</Title>
 			<FieldGroup className={styles.form} onKeyPress={onEnter}>
-				<Field name="name" label="Name" value={name} onChange={event => setName(event.target.value)} />
-				<Field name="description" label="Description" value={description} onChange={event => setDescription(event.target.value)} />
+				<Field name="name" label="Name" value={name} onChange={event => setName(event.target.value)}/>
+				<Field
+					name="description" label="Description" value={description}
+					onChange={event => setDescription(event.target.value)}/>
 			</FieldGroup>
 			<Button size="small" loading={addCollectionMutation.isLoading} onClick={mutate}>Add</Button>
 		</Modal>

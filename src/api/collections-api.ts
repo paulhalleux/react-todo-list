@@ -1,17 +1,18 @@
+import { api } from '../config/api';
 import { Collection, CollectionRequest } from '../typings/models';
 
 export class CollectionsApi {
-	public static async GetCollections(): Promise<Collection[]> {
-		return await fetch('https://localhost:7181/api/collections').then(value => value.json());
+	public static async getCollections(): Promise<Collection[]> {
+		const response = await api.get('collections');
+		return response.data;
 	}
 
-	public static async AddCollection(request: CollectionRequest): Promise<Collection> {
-		return await fetch('https://localhost:7181/api/collections', {
-			method: 'POST',
-			body: JSON.stringify(request),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		}).then(value => value.json());
+	public static async deleteCollection(id: number) {
+		await api.delete(`collections/${id}`);
+	}
+
+	public static async addCollection(request: CollectionRequest): Promise<Collection> {
+		const response = await api.post('collections', request);
+		return response.data;
 	}
 }
